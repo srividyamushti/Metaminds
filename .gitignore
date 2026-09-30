@@ -1,5 +1,23 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# Environments & Secrets
 .env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Testing & Coverage caches
 .pytest_cache/
+.coverage
+htmlcov/
+
+# Editor & OS artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 .ipynb_checkpoints/
