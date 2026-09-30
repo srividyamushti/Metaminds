@@ -3,103 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Metaminds — Adaptive Sensor Fault AI</title>
+  <title>Metaminds | Adaptive Edge Sensor AI — IEEE CIS Track 04</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
-    body { background-color: #0e1117; color: #f0f2f6; font-family: system-ui, sans-serif; }
-    .card { background-color: #1e222b; border: 1px solid #2d3342; border-radius: 12px; }
-    .metric-value { font-size: 2rem; font-weight: bold; color: #00d26a; }
-    .badge-track { background: linear-gradient(135deg, #6366f1, #a855f7); font-size: 0.85rem; }
-  </style>
-</head>
-<body class="p-4">
-  <div class="container-fluid" style="max-width: 1200px;">
-    <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-secondary">
-      <div>
-        <h2 class="mb-1">⚡ Adaptive Sensor Fault Detection Engine</h2>
-        <span class="badge badge-track py-2 px-3">IEEE CIS Track 04 · Multi-Objective Evolutionary Optimization</span>
-      </div>
-      <div class="text-end">
-        <span class="badge bg-success">Status: Online</span>
-        <div class="text-muted small mt-1">Autonomous AI Auditor Verified</div>
-      </div>
-    </div>
-
-    <div class="row g-4 mb-4">
-      <div class="col-md-3">
-        <div class="card p-3 text-center">
-          <div class="text-secondary small">F1-Score (Under Drift)</div>
-          <div class="metric-value">0.962</div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center">
-          <div class="text-secondary small">Inference Latency</div>
-          <div class="metric-value" style="color: #38bdf8;">0.042 ms</div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center">
-          <div class="text-secondary small">Model Node Complexity</div>
-          <div class="metric-value" style="color: #fbbf24;">18 Nodes</div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center">
-          <div class="text-secondary small">Pareto Optimization</div>
-          <div class="metric-value" style="color: #c084fc;">4 Gens</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-5">
-        <div class="card p-4">
-          <h5 class="mb-3">1. Environmental Drift Simulation</h5>
-          <label class="form-label text-secondary small">Simulate Calibration Drift (°C / Hz): <span id="driftVal" class="text-info fw-bold">+5.0</span></label>
-          <input type="range" class="form-range" id="driftInput" min="0" max="25" step="0.5" value="5" oninput="updateSimulation()">
-          
-          <label class="form-label text-secondary small mt-3">Target Fault Ratio: <span class="text-warning fw-bold">15%</span></label>
-          <input type="range" class="form-range" min="5" max="35" value="15">
-          
-          <button class="btn btn-primary w-100 mt-4" onclick="runOptimization()">🚀 Run Evolutionary Search</button>
-          
-          <div class="alert alert-dark mt-3 p-2 small border-secondary">
-            Optimal Chromosome: <code>max_depth=4</code>, <code>min_samples_split=2</code>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-7">
-        <div class="card p-4">
-          <h5>2. Real-Time Telemetry Stream (Temperature & Vibration)</h5>
-          <canvas id="telemetryChart" height="180"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const ctx = document.getElementById('telemetryChart').getContext('2d');
-    let chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: Array.from({length: 25}, (_, i) => `${i*2}s`),
-        datasets: [
-          { label: 'Temperature (°C)', data: [65,66,64,68,70,88,67,65,66,92,65,64,66,68,70,66,65,64,68,71,65,66,64,67,65], borderColor: '#f87171', tension: 0.3 },
-          { label: 'Vibration (Hz)', data: [12,13,11,14,12,32,13,12,11,35,12,11,13,14,12,11,13,12,14,15,12,13,11,12,13], borderColor: '#60a5fa', tension: 0.3 }
-        ]
-      },
-      options: { responsive: true, plugins: { legend: { labels: { color: '#94a3b8' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8' } } } }
-    });
-
-    function updateSimulation() {
-      document.getElementById('driftVal').innerText = '+' + document.getElementById('driftInput').value;
+    :root {
+      --bg-dark: #090c10;
+      --card-bg: rgba(22, 27, 34, 0.75);
+      --card-border: rgba(48, 54, 61, 0.8);
+      --accent-cyan: #00f2fe;
+      --accent-purple: #7928ca;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --text-muted: #8b949e;
     }
-    function runOptimization() {
-      alert('Evolutionary Search completed across 4 generations! Optimal Pareto chromosome identified.');
+
+    * { box-sizing: border-box; }
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.05) 0%, transparent 40%);
+      color: #f0f6fc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-  </script>
-</body>
-</html>
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 242, 254, 0.3);
+    }
+
+    /* KPI metric styling */
+    .kpi-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; }
+    .kpi-val { font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin: 6px 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--accent-green); font-weight: 500; }
+
+    /* Pulse dot */
+    .pulse-dot {
+      width: 9px; height: 9px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 12px var(--accent-green);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 18px var(--accent-green); }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    /* Gradient badging */
+    .badge-gradient {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+      color: #fff;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Sliders */
+    .form-range::-webkit-slider-thumb {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #0070f3, #7928ca);
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 12px 20px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
+    }
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #0051b3, #6118aa);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20
